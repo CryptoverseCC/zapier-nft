@@ -1,5 +1,5 @@
-const getLink = (purr) => {
-  return `https://cryptopurr.co/${purr.id}`;
+const getLink = (purr, catId = '123') => {
+  return `https://cryptopurr.co/${catId}`;
 }
 
 module.exports = { getLink };

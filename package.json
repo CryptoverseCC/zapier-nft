@@ -1,6 +1,6 @@
 {
   "name": "@userfeeds/zapier",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": "userfeeds/zapier",
   "license": "BSD-3-Clause",
   "main": "index.js",

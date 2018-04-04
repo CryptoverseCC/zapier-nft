@@ -2,6 +2,7 @@ const fetch = require('../utils/fetch');
 const inputFields = require('../utils/inputFields');
 const etherscan = require('../utils/etherscan');
 const cryptoPurr = require('../utils/cryptoPurr');
+const hydrators = require('../utils/hydrators');
 
 const listPurrs = (z, bundle) => {
   const kitty_id = bundle.inputData.kitty_id;
@@ -15,9 +16,17 @@ const listPurrs = (z, bundle) => {
         author: item.author,
         created_at: item.created_at,
         content: item.target && item.target.id,
-        link: cryptoPurr.getLink(item),
+        link: cryptoPurr.getLink(item, kitty_id),
         etherscan_url: etherscan.getUrlForPurr(item),
       }))
+      .map(item =>
+        Object.assign({}, item, {
+          img: z.dehydrate(
+            hydrators.stashPurrImage,
+            Object.assign({}, item, { kitty_id })
+          ),
+        })
+      )
   );
 };
 
@@ -40,7 +49,10 @@ module.exports = {
       createdAt: 1521748632000,
       author: '0x6b7eb2e2084ad4f3606a5f082195c0121c0efa3b',
       content: 'I \u2764 catnip',
-      etherscan_url: 'https://kovan.etherscan.io/tx/0xd87fbe04e51c55bbd90b3dcfbd48046311427038dfbb5597c533f85c5a85e7bf',
+      link: 'https://cryptopurr.co/123421',
+      etherscan_url:
+      'https://kovan.etherscan.io/tx/0xd87fbe04e51c55bbd90b3dcfbd48046311427038dfbb5597c533f85c5a85e7bf',
+      img: 'Sample IMG',
     },
 
     outputFields: [
@@ -50,6 +62,7 @@ module.exports = {
       { key: 'content', label: 'Purr content' },
       { key: 'link', label: 'Link to purr' },
       { key: 'etherscan_url', label: 'Etherscan url to purr' },
+      { key: 'img', label: 'Purr image', type: 'file' },
     ],
   },
 };

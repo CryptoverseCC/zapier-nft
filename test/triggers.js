@@ -21,7 +21,7 @@ describe('triggers', () => {
         .then(results => {
           results.length.should.above(0);
 
-          const firstPurr = results[0];
+          const firstPurr = results[results.length - 1];
           firstPurr.id.should.eql(
             'claim:0xd87fbe04e51c55bbd90b3dcfbd48046311427038dfbb5597c533f85c5a85e7bf:0',
           );
@@ -48,7 +48,7 @@ describe('triggers', () => {
         .then(results => {
           results.length.should.above(0);
 
-          const firstLike = results[0];
+          const firstLike = results[results.length - 1];
           firstLike.id.should.eql(
             'claim:0x9aca0b21d307aef5db67445201aff00644f0e516c839edb2d4b12379eb791c49:0',
           );
@@ -75,7 +75,7 @@ describe('triggers', () => {
         .then(results => {
           results.length.should.above(0);
 
-          const firstResponse = results[0];
+          const firstResponse = results[results.length - 1];
           firstResponse.id.should.eql(
             'claim:0x6be4ee9900813d40b4f788ee9fb0e852364317a51ab68c56f6bd11f2319034bc:0',
           );
