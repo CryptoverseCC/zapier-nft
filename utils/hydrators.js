@@ -20,6 +20,14 @@ const stashPurrImage = (z, bundle) => {
     },
   });
 
+  filePromise.then((res) => {
+    if (res.status >= 200 && res.status < 300) {
+      z.console.log('Fetching screen ok');
+    } else {
+      response.text().then(content => z.console.log(`Screen response ${content}`));
+    }
+  })
+
   return z.stashFile(filePromise).then(url => {
     z.console.log(`Stashed URL = ${url}`);
     return url;
