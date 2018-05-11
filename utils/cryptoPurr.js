@@ -7,7 +7,7 @@ const {
 } = require('./contracts');
 
 const getLink = (contract, tokenId) => {
-  switch(contract) {
+  switch(contract.toLowerCase()) {
     case cryptoKittiesContractAddress:
       return `https://cryptopurr.co/${tokenId}`;
     case cryptoBotsContractAddress:
