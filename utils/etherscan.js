@@ -1,4 +1,4 @@
-const getUrlForPurr = purr => {
+const getUrlForMessage = purr => {
   const { family, id } = purr;
   const [, tx] = id.split(':');
 
@@ -7,4 +7,4 @@ const getUrlForPurr = purr => {
   }etherscan.io/tx/${tx}`;
 };
 
-module.exports = { getUrlForPurr };
+module.exports = { getUrlForMessage };

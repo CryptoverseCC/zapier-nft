@@ -13,11 +13,11 @@ describe('triggers', () => {
           api_url: 'https://api-dev.userfeeds.io',
           network: 'ethereum',
           contract: '0x06012c8cf97bead5deae237070f9587f8e7a266d',
-          kitty_id: 587035,
+          token_id: 587035,
         },
       };
 
-      appTester(App.triggers.purr.operation.perform, bundle)
+      appTester(App.triggers.post.operation.perform, bundle)
         .then(results => {
           results.length.should.above(0);
 
@@ -40,7 +40,7 @@ describe('triggers', () => {
           api_url: 'https://api-dev.userfeeds.io',
           network: 'ethereum',
           contract: '0x06012c8cf97bead5deae237070f9587f8e7a266d',
-          kitty_id: 593163,
+          token_id: 593163,
         },
       };
 
@@ -67,7 +67,7 @@ describe('triggers', () => {
           api_url: 'https://api-dev.userfeeds.io',
           network: 'ethereum',
           contract: '0x06012c8cf97bead5deae237070f9587f8e7a266d',
-          kitty_id: 593163,
+          token_id: 593163,
         },
       };
 

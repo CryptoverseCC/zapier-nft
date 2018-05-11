@@ -1,8 +1,8 @@
-const purr = require('./triggers/purr');
+const post = require('./triggers/post');
 const reply = require('./triggers/reply');
 const like = require('./triggers/like');
 
-const hydrators = require('./utils/hydrators');
+// const hydrators = require('./utils/hydrators');
 
 // Now we can roll up all our behaviors in an App.
 const App = {
@@ -17,10 +17,10 @@ const App = {
 
   resources: {},
 
-  hydrators: hydrators,
+  hydrators: {},
   // If you want your trigger to show up, you better include it here!
   triggers: {
-    [purr.key]: purr,
+    [post.key]: post,
     [reply.key]: reply,
     [like.key]: like,
   },

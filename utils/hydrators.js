@@ -1,7 +1,7 @@
 const stashPurrImage = (z, bundle) => {
-  const { kitty_id, etherscan_url, link, content } = bundle.inputData;
+  const { token_id, etherscan_url, link, content } = bundle.inputData;
 
-  const purrUrl = `https://userfeeds.io/purr?kitty_id=${kitty_id}&etherscan_url=${encodeURIComponent(
+  const purrUrl = `https://userfeeds.io/purr?token_id=${token_id}&etherscan_url=${encodeURIComponent(
     etherscan_url
   )}&link=${encodeURIComponent(link)}&content=${encodeURIComponent(content)}`;
 

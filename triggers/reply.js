@@ -4,19 +4,18 @@ const etherscan = require('../utils/etherscan');
 const cryptoPurr = require('../utils/cryptoPurr');
 
 const listReplys = (z, bundle) => {
-  const kitty_id = bundle.inputData.kitty_id;
+  const { contract ,token_id } = bundle.inputData;
 
   return fetch.purrs(z, bundle).then(items =>
     items
       .filter(item => item.type === 'response')
-      .filter(item => parseInt(item.context.split(':')[2]) === kitty_id)
       .map(item => ({
         id: item.id,
         author: item.author,
         created_at: item.created_at,
         content: item.target && item.target.id,
-        link: cryptoPurr.getLink(item),
-        etherscan_url: etherscan.getUrlForPurr(item),
+        link: cryptoPurr.getLink(contract, token_id),
+        etherscan_url: etherscan.getUrlForMessage(item),
       }))
   );
 };
@@ -26,7 +25,7 @@ module.exports = {
   noun: 'Reply',
   display: {
     label: 'Reply',
-    description: 'Trigger when a kitty reply to someone.',
+    description: 'Triggers on reply.',
   },
 
   operation: {
@@ -48,7 +47,7 @@ module.exports = {
       { key: 'created_at', label: 'Created At' },
       { key: 'author', label: 'Author address' },
       { key: 'content', label: 'Reply content' },
-      { key: 'link', label: 'Link to reply' },
+      { key: 'link', label: 'Link' },
       { key: 'etherscan_url', label: 'Etherscan url to purr' },
     ],
   },
