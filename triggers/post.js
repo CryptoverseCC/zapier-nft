@@ -49,9 +49,9 @@ module.exports = {
       { key: 'id', label: 'ID' },
       { key: 'created_at', label: 'Created At' },
       { key: 'author', label: 'Author address' },
-      { key: 'content', label: 'Purr content' },
+      { key: 'content', label: 'Post content' },
       { key: 'link', label: 'Link' },
-      { key: 'etherscan_url', label: 'Etherscan url to purr' },
+      { key: 'etherscan_url', label: 'Etherscan url to post' },
     ],
   },
 };
