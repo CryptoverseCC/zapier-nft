@@ -25,9 +25,7 @@ module.exports = [
   (z, bundle) => {
     const contract = bundle.inputData.contract
     let choices = ['ethereum'];
-    if (contract === digitalArtContractAddress) {
-      choices = ['rinkeby'];
-    } else if ([cryptoKittiesContractAddress, cryptoBotsContractAddress, ethmojiContractAddress, robohashContractAddress, digitalArtContractAddress].indexOf(contract) === -1) {
+    if ([cryptoKittiesContractAddress, cryptoBotsContractAddress, ethmojiContractAddress, robohashContractAddress, digitalArtContractAddress].indexOf(contract) === -1) {
       choices = ['ethereum', 'kovan', 'rinkeby', 'ropsten'];
     }
 
