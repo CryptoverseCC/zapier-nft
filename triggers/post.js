@@ -2,7 +2,6 @@ const fetch = require('../utils/fetch');
 const inputFields = require('../utils/inputFields');
 const etherscan = require('../utils/etherscan');
 const cryptoPurr = require('../utils/cryptoPurr');
-const hydrators = require('../utils/hydrators');
 
 const listPosts = (z, bundle) => {
   const { contract ,token_id } = bundle.inputData;

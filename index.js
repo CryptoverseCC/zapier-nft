@@ -2,8 +2,6 @@ const post = require('./triggers/post');
 const reply = require('./triggers/reply');
 const like = require('./triggers/like');
 
-// const hydrators = require('./utils/hydrators');
-
 // Now we can roll up all our behaviors in an App.
 const App = {
   // This is just shorthand to reference the installed dependencies you have. Zapier will
