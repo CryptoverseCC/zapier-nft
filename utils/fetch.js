@@ -3,14 +3,14 @@ const purrs = (z, bundle) => {
 
   const requestOptions = {
     method: 'GET',
-    url: `${api_url}/ranking/cryptopurr_feed;context=${network}:${contract.toLowerCase()}:${token_id}`,
+    url: `${api_url}/ranking/cryptoverse_single_feed;id=${network}:${contract.toLowerCase()}:${token_id}`,
   };
 
   return z
     .request(requestOptions)
-    .then(response => z.JSON.parse(response.content))
-    .then(data => data.items)
-    .catch(e => z.console.error(e))
+    .then((response) => z.JSON.parse(response.content))
+    .then((data) => data.items)
+    .catch((e) => z.console.error(e));
 };
 
 module.exports = {

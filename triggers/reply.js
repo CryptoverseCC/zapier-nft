@@ -4,19 +4,17 @@ const etherscan = require('../utils/etherscan');
 const cryptoPurr = require('../utils/cryptoPurr');
 
 const listReplys = (z, bundle) => {
-  const { contract ,token_id } = bundle.inputData;
+  const { contract, token_id } = bundle.inputData;
 
-  return fetch.purrs(z, bundle).then(items =>
-    items
-      .filter(item => item.type === 'response')
-      .map(item => ({
-        id: item.id,
-        author: item.author,
-        created_at: item.created_at,
-        content: item.target && item.target.id,
-        link: cryptoPurr.getLink(contract, token_id),
-        etherscan_url: etherscan.getUrlForMessage(item),
-      }))
+  return fetch.purrs(z, bundle).then((items) =>
+    items.filter((item) => item.type === 'response').map((item) => ({
+      id: item.id,
+      author: item.author,
+      created_at: item.created_at,
+      content: item.target,
+      link: cryptoPurr.getLink(contract, token_id),
+      etherscan_url: etherscan.getUrlForMessage(item),
+    })),
   );
 };
 
@@ -34,8 +32,7 @@ module.exports = {
     perform: listReplys,
 
     sample: {
-      id:
-        'claim:0x808f50d0a48be024316eda2ca918f4a38be6f6118ca0cfebafdd6602e018dbdd:0',
+      id: 'claim:0x808f50d0a48be024316eda2ca918f4a38be6f6118ca0cfebafdd6602e018dbdd:0',
       createdAt: 1522690084000,
       author: '0x9093428aa6266d589b866ac2956e328ab9039bee',
       content: "I'm impressed, purred out!",

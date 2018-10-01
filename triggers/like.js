@@ -4,19 +4,17 @@ const etherscan = require('../utils/etherscan');
 const cryptoPurr = require('../utils/cryptoPurr');
 
 const listLikes = (z, bundle) => {
-  const { contract ,token_id } = bundle.inputData;
+  const { contract, token_id } = bundle.inputData;
 
-  return fetch.purrs(z, bundle).then(items =>
-    items
-      .filter(item => item.type === 'like')
-      .map(item => ({
-        id: item.id,
-        author: item.author,
-        created_at: item.created_at,
-        content: item.target && item.target.target && item.target.target.id,
-        link: cryptoPurr.getLink(contract, token_id),
-        etherscan_url: etherscan.getUrlForMessage(item),
-      }))
+  return fetch.purrs(z, bundle).then((items) =>
+    items.filter((item) => item.type === 'like').map((item) => ({
+      id: item.id,
+      author: item.author,
+      created_at: item.created_at,
+      content: item.target && item.target.target,
+      link: cryptoPurr.getLink(contract, token_id),
+      etherscan_url: etherscan.getUrlForMessage(item),
+    })),
   );
 };
 
@@ -34,8 +32,7 @@ module.exports = {
     perform: listLikes,
 
     sample: {
-      id:
-        'claim:0x9aca0b21d307aef5db67445201aff00644f0e516c839edb2d4b12379eb791c49:0',
+      id: 'claim:0x9aca0b21d307aef5db67445201aff00644f0e516c839edb2d4b12379eb791c49:0',
       createdAt: 1522693740000,
       author: '0x460031ae4db5720d92a48fecf06a208c5099c186',
       content: 'I \u2764 catnip',
